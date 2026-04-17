@@ -1,4 +1,4 @@
-<img width="1580" height="850" alt="topology2" src="https://github.com/user-attachments/assets/75f824f8-60fd-435b-b8f1-717d97f2c2f2" />
+![Hybrid Cloud Topology](docs/images/topology.jpg)
 
 # Hybrid-Cloud Observability & Security Lab
 ### Enterprise Monitoring of a Hybrid Environment (VMware On-Prem + Microsoft Azure)
@@ -73,6 +73,11 @@ New-NetFirewallRule -DisplayName "Zabbix" -Direction Inbound -Action Allow -Prot
 ## 📈 Final Results
 
 The final dashboard shows 100% availability across all hybrid assets, including real-time telemetry from Azure subscriptions and local virtualized servers.
-<img width="2553" height="583" alt="image" src="https://github.com/user-attachments/assets/c6d6752e-a648-43d4-8110-642f9dc9737f" />
+
+![General Dashboard](docs/images/maindash.png)
+
+---
+
+![Host Dashboard](docs/images/hostdash.png)
 
 ---

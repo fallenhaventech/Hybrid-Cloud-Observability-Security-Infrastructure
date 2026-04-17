@@ -1,22 +1,24 @@
-# Azure Cloud Integration & Identity Management
+# Troubleshooting & Incident Resolution Log
 
-## 🔐 Security First Approach
-Instead of using personal credentials, this lab utilizes **Identity & Access Management (IAM)** best practices.
+During the deployment of this lab, several connectivity and application-level issues were identified and resolved. This log serves as a technical knowledge base.
 
-### 1. App Registration (Service Principal)
-A dedicated Service Principal named `Zabbix-Monitor` was created in **Microsoft Entra ID**. 
-- **Authentication:** Client Secret with a 6-month rotation policy.
-- **Scope:** Restricted to the specific Lab Subscription.
+## 🔴 Issue 1: Connection Refused [111] on pfSense
+- **Symptom:** Zabbix dashboard showed the pfSense host as "Not Available".
+- **Diagnosis:** Running `systemctl status` confirmed the agent was down. Further inspection revealed the "Listen IP" was set to `127.0.0.1`.
+- **Resolution:** Updated the configuration to `0.0.0.0` to allow external requests and implemented the **Service Watchdog** package to automatically restart the service upon failure.
 
-### 2. Role-Based Access Control (RBAC)
-Following the **Principle of Least Privilege (PoLP)**, the application was assigned the **Reader** role.
-- **Why?** The monitoring system only needs to "read" metrics and metadata; it should never have "Contributor" or "Owner" rights to modify infrastructure.
+## 🔴 Issue 2: Connection Reset by Peer [104] on Windows
+- **Symptom:** TCP connection established but immediately closed by the Windows host.
+- **Diagnosis:** Identified as an ACL (Access Control List) issue within the `zabbix_agent2.conf` file.
+- **Resolution:** Corrected the `Server=` and `ServerActive=` parameters to include the Zabbix Server IP (`192.168.100.247`).
 
-## 📈 Monitoring Methodology
-The Zabbix Server performs agentless monitoring by querying the following Azure endpoints:
-1. `management.azure.com` (Resource Metadata)
-2. `login.microsoftonline.com` (OAuth 2.0 Token generation)
+## 🔴 Issue 3: Invalid Source/Destination Port Logic
+- **Symptom:** Firewall rules were active but traffic was still blocked.
+- **Diagnosis:** The rule was incorrectly configured with Source Port `10050`. 
+- **Learning:** Recalled TCP fundamentals: Source ports are ephemeral (random high ports), while Destination ports are fixed for services. 
+- **Resolution:** Reconfigured the rule to `Source: Any` -> `Destination Port: 10050`.
 
-## 🚀 Key Results
-- Auto-discovery of Virtual Machines, VNets, and Storage Accounts.
-- Real-time visualization of Azure consumption and health within the on-premise dashboard.
+## 🔴 Issue 4: Azure API Parameter Missing (app_id)
+- **Symptom:** Zabbix failed to discover Azure resources.
+- **Diagnosis:** The Zabbix 8.0 template required specific Macro naming conventions.
+- **Resolution:** Renamed host macros to `{$AZURE.APP.ID}`, `{$AZURE.SECRET}`, etc., ensuring the JavaScript engine could correctly authenticate via OAuth 2.0.
