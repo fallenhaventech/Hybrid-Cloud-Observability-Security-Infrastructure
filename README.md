@@ -71,5 +71,6 @@ New-NetFirewallRule -DisplayName "Zabbix" -Direction Inbound -Action Allow -Prot
 ## 📈 Final Results
 
 The final dashboard shows 100% availability across all hybrid assets, including real-time telemetry from Azure subscriptions and local virtualized servers.
+<img width="2553" height="583" alt="image" src="https://github.com/user-attachments/assets/c6d6752e-a648-43d4-8110-642f9dc9737f" />
 
 ---
