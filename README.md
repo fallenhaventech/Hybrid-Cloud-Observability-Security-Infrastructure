@@ -1,3 +1,5 @@
+<img width="1580" height="850" alt="topology2" src="https://github.com/user-attachments/assets/75f824f8-60fd-435b-b8f1-717d97f2c2f2" />
+
 # Hybrid-Cloud Observability & Security Lab
 ### Enterprise Monitoring of a Hybrid Environment (VMware On-Prem + Microsoft Azure)
 
