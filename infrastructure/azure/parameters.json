@@ -1,0 +1,189 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "extendedLocation": {
+            "value": {}
+        },
+        "virtualNetworkName": {
+            "value": "vnet-hybrid-lab"
+        },
+        "tagsByResource": {
+            "value": {
+                "Microsoft.Network/virtualNetworks": {},
+                "Microsoft.Network/ddosProtectionPlans": {},
+                "Microsoft.Network/publicIPAddresses": {},
+                "Microsoft.Network/azureFirewalls": {},
+                "Microsoft.Network/bastionHosts": {},
+                "Microsoft.Network/natGateways": {},
+                "Microsoft.Network/publicIPPrefixes": {},
+                "Microsoft.Network/networkSecurityGroups": {}
+            }
+        },
+        "addressSpace": {
+            "value": {
+                "addressPrefixes": [
+                    "10.0.0.0/16"
+                ]
+            }
+        },
+        "natGatewaysWithNewPublicIpAddress": {
+            "value": []
+        },
+        "natGatewaysWithoutNewPublicIpAddress": {
+            "value": []
+        },
+        "natGatewayPublicIpAddressesNew": {
+            "value": []
+        },
+        "networkSecurityGroupsNew": {
+            "value": []
+        },
+        "subnets": {
+            "value": [
+                {
+                    "name": "snet-workload-01",
+                    "properties": {
+                        "addressPrefixes": [
+                            "10.0.0.0/24"
+                        ],
+                        "defaultOutboundAccess": false,
+                        "privateEndpointNetworkPolicies": "Disabled"
+                    }
+                },
+                {
+                    "name": "AzureBastionSubnet",
+                    "properties": {
+                        "addressPrefix": null,
+                        "addressPrefixes": [
+                            "10.0.1.0/26"
+                        ]
+                    }
+                },
+                {
+                    "name": "snet-main",
+                    "properties": {
+                        "addressPrefixes": [
+                            "10.0.2.0/24"
+                        ],
+                        "defaultOutboundAccess": false,
+                        "privateEndpointNetworkPolicies": "Disabled"
+                    }
+                },
+                {
+                    "name": "GatewaySubnet",
+                    "properties": {
+                        "addressPrefixes": [
+                            "10.0.255.0/28"
+                        ],
+                        "defaultOutboundAccess": false,
+                        "privateEndpointNetworkPolicies": "Disabled"
+                    }
+                }
+            ]
+        },
+        "ddosProtectionPlanEnabled": {
+            "value": false
+        },
+        "firewallEnabled": {
+            "value": false
+        },
+        "firewallSkuTier": {
+            "value": "Standard"
+        },
+        "firewallPolicyIsNew": {},
+        "firewallPolicyId": {},
+        "firewallPolicyTier": {},
+        "firewallPublicIpAddressIsNew": {
+            "value": false
+        },
+        "firewallPublicIpAddressId": {
+            "value": ""
+        },
+        "firewallPublicIPAddressServiceTag": {},
+        "bastionEnabled": {
+            "value": true
+        },
+        "bastionName": {
+            "value": "vnet-hybrid-lab-Bastion"
+        },
+        "bastionPublicIpAddressIsNew": {
+            "value": true
+        },
+        "bastionPublicIpAddressName": {
+            "value": "vnet-hybrid-lab-bastion"
+        },
+        "bastionPublicIpAddressServiceTag": {},
+        "bastionNsgIsNew": {},
+        "bastionNsgId": {},
+        "encryptionEnabled": {
+            "value": false
+        },
+        "encryptionEnforcement": {
+            "value": "AllowUnencrypted"
+        },
+        "addressSpaceStartingAddressChanged": {
+            "value": false
+        },
+        "addressSpaceAddressSizeChanged": {
+            "value": false
+        },
+        "ipv6Enabled": {
+            "value": false
+        },
+        "defaultSubnetChanged": {
+            "value": true
+        },
+        "subnetsInfo": {
+            "value": [
+                {
+                    "cidr": "10.0.0.0/24",
+                    "name": "Default",
+                    "natGw": "none",
+                    "nsg": "none",
+                    "udr": "none"
+                },
+                {
+                    "cidr": "10.0.1.0/26",
+                    "name": "Azure Bastion",
+                    "natGw": "none",
+                    "nsg": "none",
+                    "udr": "none"
+                },
+                {
+                    "cidr": "10.0.2.0/24",
+                    "name": "Default",
+                    "natGw": "none",
+                    "nsg": "none",
+                    "udr": "none"
+                },
+                {
+                    "cidr": "10.0.255.0/28",
+                    "name": "Virtual Network Gateway",
+                    "natGw": "none",
+                    "nsg": "none",
+                    "udr": "none"
+                }
+            ]
+        },
+        "subnetCount": {
+            "value": 4
+        },
+        "ipamPools": {
+            "value": []
+        },
+        "networkManager": {},
+        "createNetworkManager": {
+            "value": false
+        },
+        "networkManagerName": {},
+        "avnmSubscriptionId": {},
+        "avnmResourceGroup": {},
+        "summarizedGatewayPrefixes": {
+            "value": null
+        }
+    }
+}
