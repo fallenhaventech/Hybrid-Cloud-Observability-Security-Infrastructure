@@ -78,7 +78,7 @@ The final dashboard shows 100% availability across all hybrid assets, including 
 
 ---
 
-<img width="2559" height="1091" alt="image" src="https://github.com/user-attachments/assets/d41d8ee6-0059-4461-b8e6-3d63e0878419" />
+<img width="1897" height="607" alt="image" src="https://github.com/user-attachments/assets/d41d8ee6-0059-4461-b8e6-3d63e0878419" />
 
 
 
