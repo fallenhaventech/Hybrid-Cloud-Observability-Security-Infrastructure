@@ -24,7 +24,7 @@ During the deployment of this lab, several connectivity and application-level is
 - **Resolution:** Renamed host macros to `{$AZURE.APP.ID}`, `{$AZURE.SECRET}`, etc., ensuring the JavaScript engine could correctly authenticate via OAuth 2.0.
 
 ## 🔴 Issue 5: Global Script Execution Disabled
-- **Symptom: Unable to execute "Ping" or "Traceroute" from the Zabbix Frontend. Error: "Global script execution on Zabbix server is disabled".
-- **Technical Context (Security): Modern Zabbix versions disable this feature by default to minimize the Attack Surface and prevent unauthorized Command Injection.
-- **Resolution: Modified zabbix_server.conf to set EnableGlobalScripts=1.
-- **Hardening Consideration: In a production environment, instead of enabling this globally, it is recommended to use Zabbix RBAC to restrict who can execute these scripts, ensuring that only authenticated Administrators can trigger OS-level commands through the UI.
+- **Symptom:** Unable to execute "Ping" or "Traceroute" from the Zabbix Frontend. Error: "Global script execution on Zabbix server is disabled".
+- **Technical Context (Security):** Modern Zabbix versions disable this feature by default to minimize the Attack Surface and prevent unauthorized Command Injection.
+- **Resolution:** Modified zabbix_server.conf to set EnableGlobalScripts=1.
+- **Hardening Consideration:** In a production environment, instead of enabling this globally, it is recommended to use Zabbix RBAC to restrict who can execute these scripts, ensuring that only authenticated Administrators can trigger OS-level commands through the UI.
